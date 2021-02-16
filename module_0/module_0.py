@@ -24,7 +24,41 @@ def score_game(game_core):
     return (score)
 
 
+def game_core_v2(number):
+    '''Сначала устанавливаем любое random число, а потом уменьшаем или увеличиваем его в зависимости от того, больше оно или меньше нужного.
+       Функция принимает загаданное число и возвращает число попыток'''
+    count = 1
+    predict = np.random.randint(1, 101)
+    while number != predict:
+        count += 1
+        if number > predict:
+            predict += 1
+        elif number < predict:
+            predict -= 1
+    return (count)  # выход из цикла, если угадали
 
-score_game(game_core_v1)
+
+score_game(game_core_v2)
 
 
+def game_core_v3(number):
+    count = 1
+    minimum = 1
+    maximum = 101
+    medium = maximum / 2
+    if number < medium:
+        predict = np.random.randint(minimum, medium)
+    else:
+        predict = np.random.randint(medium, maximum)
+    while number != predict:
+        count += 1
+        if predict < number:
+            minimum = predict
+        else:
+            maximum = predict
+        predict = np.random.randint(minimum, maximum)
+        # print(minimum, maximum, predict, number)
+    return (count)  # выход из цикла, если угадали
+
+
+score_game(game_core_v3)
