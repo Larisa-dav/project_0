@@ -62,3 +62,41 @@ def game_core_v3(number):
 
 
 score_game(game_core_v3)
+
+def game_core_v4(number):
+    count = 1
+    minimum = 1
+    maximum = 101
+    medium = int(maximum / 2)
+    predict = medium
+    while number != predict:
+        count += 1
+        if predict < number:
+            minimum = predict
+        else:
+            maximum = predict
+        predict = np.random.randint(minimum, maximum)
+        # print(minimum, maximum, predict, number)
+    return (count)  # выход из цикла, если угадали
+
+
+score_game(game_core_v4)
+
+def game_core_v5(number):
+    count = 1
+    minimum = 1
+    maximum = 101
+    medium = int(maximum / 2)
+    predict = medium
+    while number != predict:
+        count += 1
+        if predict < number:
+            minimum = predict
+        else:
+            maximum = predict
+        predict = int((maximum - minimum)/2+minimum)  # всегда дели диапазон пополам
+        # print(minimum, maximum, predict, number)
+    return (count)  # выход из цикла, если угадали
+
+
+score_game(game_core_v5)
